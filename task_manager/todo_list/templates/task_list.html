@@ -46,15 +46,17 @@
             {% if not task.complete %}
             {% if not task.in_progress%}
     
-            <div class="task-content-wrapper">
+            <div class="task-content-wrapper" draggable="true" id="todoelement"  >
                 
-                <div class="task-incomplete-icon"></div>
-                    <i><a href="{% url 'task-update' task.id %}">{{task}}</a></i>
+                <div class="task-incomplete-icon" ></div>
+                    <i><a href="{% url 'task-update' task.id %}">&nbsp; {{task}} &nbsp;</a></i>
+                    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            
                     
                     
                 
             </div>
-            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            <br>
             
            
             {% endif %}
@@ -70,13 +72,15 @@
             {% for task in tasks %}
             {% if task.in_progress %}
             
-            <div class="task-content-wrapper">
+            <div class="task-content-wrapper" draggable="true" >
 
                 <div class="task-inprogress-icon"></div>
-                    <i><a href="{% url 'task-update' task.id %}">{{task}}</a></i>
+                    <i><a href="{% url 'task-update' task.id %}">&nbsp;{{task}}&nbsp;</a></i>
+                    
+            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
                     
             </div>
-            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            <br>
             {% endif %}
             {% endfor %}
             
@@ -93,14 +97,16 @@
             {% for task in tasks %}
             {% if task.complete  %}
             {% if not task.in_progress%}
-            <div class="task-content-wrapper">
+            <div class="task-content-wrapper" draggable="true" >
                 
                 <div class="task-complete-icon"></div>
-                    <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
+                    <i><s><a href="{% url 'task-update' task.id %}">&nbsp;{{task}}&nbsp;</a></s></i>
+                    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
                     
                 
             </div>
-            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            <br>
+            
             {% endif %}
             {% endif %}
             {% endfor %}
